@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Printing Services</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    .service {
+      margin-bottom: 30px;
+    }
+    .service img {
+      max-width: 100%;
+      height: auto;
+    }
+    .service-description {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Printing Services</h1>
+    <div class="row">
+      <div class="col-md-6 service">
+        <div class="service-description">
+          <h3>Printing</h3>
+          <p>Get your documents printed with our professional printing services.</p>
+          <p>Price: 3/- per page (Black & White) | 10/- per page (Color)</p>
+          <p>Also the two sided printing is also available</p>
+          <p>Get discount for a large numbers of pages to print</p>
+          <form id="printingForm">
+            <input type="file" id="fileToPrint" name="fileToPrint" accept=".pdf,.doc,.docx"><br>
+            <label for="printType">Print Type:</label>
+            <select class="form-control" id="printType">
+              <option value="black_white">Black and White</option>
+              <option value="color">Color</option>
+            </select>
+            <button type="submit" class="btn btn-primary">Print</button>
+          </form>
+        </div>
+      </div>
+      <div class="col-md-6 service">
+        <img src="images/print.jpg" alt="Printing">
+      </div>
+    </div>
+    <h2>Additional Services</h2>
+    <ul>
+      <li><button class="btn btn-primary" onclick="addToCart('Photocopying', 10)">Photocopying - 10 per page</button></li>
+      <li><button class="btn btn-primary" onclick="addToCart('Lamination', 50)">Lamination - 50</button></li>
+      <li><button class="btn btn-primary" onclick="addToCart('Binding', 100)">Binding - 100</button></li>
+    </ul>
+    <div id="shoppingCart">
+      <h3>Shopping Cart</h3>
+      <ul id="cartItems">
+      </ul>
+      <h4>Total Price: <span id="totalPrice">0.00</span></h4>
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script>
+    function addToCart(serviceName, servicePrice) {
+      var cartItems = document.getElementById("cartItems");
+      var totalPrice = document.getElementById("totalPrice");
+      var listItem = document.createElement("li");
+      listItem.textContent = serviceName + " - $" + servicePrice.toFixed(2);
+      cartItems.appendChild(listItem);
+      var currentTotalPrice = parseFloat(totalPrice.textContent);
+      currentTotalPrice += servicePrice;
+      totalPrice.textContent = currentTotalPrice.toFixed(2);
+    }
+    document.getElementById("printingForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+      var file = document.getElementById("fileToPrint").files[0];
+      if (file) {
+        alert("File will be printed successfully " + file.name);
+      } else {
+        alert("Please select a file to print.");
+      }
+    });
+  </script>
+</body>
+</html>

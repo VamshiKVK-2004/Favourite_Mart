@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grocery Section</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    .product-description {
+      max-width: 300px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Grocery Section</h1>
+    <input type="text" id="searchInput" placeholder="Search for products...">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Product</th>
+          <th>Description</th>
+          <th>Price(in Rs)</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Apple</td>
+          <td class="product-description">
+            <h4>Apple</h4>
+            <p>Fresh and juicy apples, sourced from local orchards.</p>
+          </td>
+          <td>10(each)</td>
+          <td><button class="btn btn-primary addToCart" onclick="addToCart('Apple',10)">Add to Cart</button></td>
+        </tr>
+        <tr>
+          <td>Banana</td>
+          <td class="product-description">
+            <h4>Banana</h4>
+            <p>Ripe bananas, packed with essential nutrients.</p>
+          </td>
+          <td>99(for 12)</td>
+          <td><button class="btn btn-primary addToCart" onclick="addToCart('Banana',99)">Add to Cart</button></td>
+        </tr>
+        <tr>
+          <td>Milk</td>
+          <td class="product-description">
+            <h4>Milk</h4>
+            <p>1 gallon, whole milk from local dairy farms.</p>
+          </td>
+          <td>50(for litre)</td>
+          <td><button class="btn btn-primary addToCart" onclick="addToCart('Milk',50)">Add to Cart</button></td>
+        </tr>
+        <tr>
+          <td>Bread</td>
+          <td class="product-description">
+            <h4>Bread</h4>
+            <p>Whole wheat bread, freshly baked daily.</p>
+          </td>
+          <td>60/-</td>
+          <td><button class="btn btn-primary addToCart" onclick="addToCart('Bread', 60)">Add to Cart</button></td>
+        </tr>
+      </tbody>
+    </table>
+    <div id="shoppingCart">
+      <h3>Shopping Cart</h3>
+      <ul id="cartItems">
+      </ul>
+      <h4>Total Price: <span id="totalPrice">0.00</span></h4>
+    </div>
+  </div>
+  <script>
+    function addToCart(productName, productPrice) {
+      var cartItems = document.getElementById("cartItems");
+      var totalPrice = document.getElementById("totalPrice");
+      cartItems.innerHTML += "<li>" + productName + " = Rs." + productPrice.toFixed(2) + "</li>";
+      var currentTotalPrice = parseFloat(totalPrice.innerText);
+      currentTotalPrice += productPrice;
+      totalPrice.innerText = currentTotalPrice.toFixed(2);
+    }
+  </script>
+</body>
+</html>

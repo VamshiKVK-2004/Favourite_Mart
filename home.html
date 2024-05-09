@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home Needs</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    .service {
+      margin-bottom: 30px;
+    }
+    .service img {
+      max-width: 100%;
+      height: auto;
+    }
+    .service-description {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Home Needs</h1>
+    <div class="row">
+      <div class="col-md-6 service">
+        <img src="images/clean.jpg" alt="Cleaning Supplies">
+        <div class="service-description">
+          <h3>Cleaning Supplies</h3>
+          <p>Keep your home clean and fresh with our range of cleaning supplies.</p>
+          <a href="https://www.amazon.in/s?k=house+cleaning+products+liquid&crid=2WXESWS8J81PV&sprefix=house+cleaning+products%2Caps%2C244&ref=nb_sb_ss_ts-doa-p_5_23"><button class="btn btn-primary">Shop Now</button></a>
+        </div>
+      </div>
+      <div class="col-md-6 service">
+        <img src="images/kitchen.jpg" alt="Kitchen Utensils">
+        <div class="service-description">
+          <h3>Kitchen Utensils</h3>
+          <p>Equip your kitchen with our durable and practical utensils.</p>
+          <a href="https://www.amazon.in/s?k=kitchen+utensils&crid=G3S4NE1ZZ97M&sprefix=kitchen+utensil%2Caps%2C267&ref=nb_sb_noss_1"><button class="btn btn-primary">Shop Now</button></a>
+        </div>
+      </div>
+    </div>
+    <h2>Additional Home Needs</h2>
+    <ul>
+      <li><button class="btn btn-primary" onclick="addToCart('Bedding Sets', 50)">Bedding Sets - $50</button></li>
+      <li><button class="btn btn-primary" onclick="addToCart('Home Decor', 100)">Home Decor - $100</button></li>
+    </ul>
+    <div id="shoppingCart">
+      <h3>Shopping Cart</h3>
+      <ul id="cartItems">
+      </ul>
+      <h4>Total Price: <span id="totalPrice">0.00</span></h4>
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script>
+    function addToCart(serviceName, servicePrice) {
+      var cartItems = document.getElementById("cartItems");
+      var totalPrice = document.getElementById("totalPrice");
+      var listItem = document.createElement("li");
+      listItem.textContent = serviceName + " - $" + servicePrice.toFixed(2);
+      cartItems.appendChild(listItem);
+      var currentTotalPrice = parseFloat(totalPrice.textContent);
+      currentTotalPrice += servicePrice;
+      totalPrice.textContent = currentTotalPrice.toFixed(2);
+    }
+  </script>
+</body>
+</html>

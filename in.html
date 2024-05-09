@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SignIN</title>
+    <style>
+    .error {
+            color: red;
+        }
+    </style>
+</head>
+<body style="text-align: center;background-color: antiquewhite;">
+    <div id="in">
+        <h2>Signin Form</h2>
+        <form id="signinForm" onsubmit="return validateForm()">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username"><br>
+            <span id="usernameError" class="error"></span><br>
+      
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email"><br>
+            <span id="emailError" class="error"></span><br>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password"><br>
+            <span id="passwordError" class="error"></span><br>
+
+            <label for="password">Confirm Password:</label>
+            <input type="password" id="password" name="password"><br>
+            <span id="passwordError" class="error"></span><br>
+      
+            <input type="submit" value="Submit">
+        </form>
+      </div>
+        <script>
+          function validateForm() {
+              var username = document.getElementById('username').value;
+              var email = document.getElementById('email').value;
+              var password = document.getElementById('password').value;
+      
+              var usernameError = document.getElementById('usernameError');
+              var emailError = document.getElementById('emailError');
+              var passwordError = document.getElementById('passwordError');
+      
+              var isValid = true;
+      
+              if (username === "") {
+                  usernameError.textContent = "Username is required";
+                  isValid = false;
+              } else {
+                  usernameError.textContent = "";
+              }
+              if (email === "") {
+                emailError.textContent = "Email is required";
+                isValid = false;
+            } else {
+                emailError.textContent = "";
+            }
+              if (password === "") {
+                  passwordError.textContent = "Password is required";
+                  isValid = false;
+              } else {
+                  passwordError.textContent = "";
+              }
+              return isValid;
+          }
+      </script>
+</body>
+</html>
